@@ -1,2 +1,5 @@
 # Project exclude paths
 /target/
+/out/
+/backup/
+FuckSYLUXG-master.jar

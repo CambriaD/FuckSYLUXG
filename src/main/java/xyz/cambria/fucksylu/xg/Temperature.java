@@ -29,12 +29,12 @@ public class Temperature {
      * @throws Exception 正确操作的话应该不会抛异常吧
      * @return 操作是否成功（暂未实现判断）
      */
-    public static boolean httpPost(String hour , String rsf , String cookie) throws Exception {
+    public static boolean run(String hour , String rsf , String cookie) throws Exception {
         boolean flag = false;
         CloseableHttpClient httpclient = HttpClients.createDefault();
         try {
             // 创建一个HttpPost对象实例，对应Post请求
-            HttpPost httpPost = new HttpPost("http://xg.sylu.edu.cn/SPCP/Web/Report/Index");
+            HttpPost httpPost = new HttpPost("http://xg.sylu.edu.cn/SPCP/Web/Temperature/StuTemperatureInfo");
 
             //NameValuePair接口定义了用作 HTTP 消息元素的名称/值对参数。
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
