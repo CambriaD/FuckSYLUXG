@@ -12,8 +12,6 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.http.HttpClient;
-import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +33,8 @@ public class XGLogin {
         CloseableHttpResponse response = httpClient.execute(httpPost);
 
         Header[] headers = response.getHeaders("Set-Cookie");
+
+        //System.out.println(EntityUtils.toString(response.getEntity()));
 
         String raw = headers[0].toString();
 

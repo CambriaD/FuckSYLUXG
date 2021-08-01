@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="FuckSYLUXG-master" />
         <module name="FuckSYLUXG" />
+        <module name="XG" />
       </profile>
     </annotationProcessing>
   </component>

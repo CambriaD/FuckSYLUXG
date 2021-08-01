@@ -7,8 +7,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +60,7 @@ public class GetInfoCollectForm {
 
         data.add(new BasicNameValuePair("PZData" , pzdata.toString()));
 
-        //System.out.println(data);
+        System.out.println(data);
 
         return data;
     }

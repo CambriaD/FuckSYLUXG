@@ -10,7 +10,7 @@ import java.util.Properties;
 public class Main {
     static String FILE_PATH = "StuInfos/";
 
-    public static void main(String[] args) throws IOException {
+    /*public static void main(String[] args) throws IOException {
         File[] files = new File(FILE_PATH).listFiles();
         if (files == null)
             return;
@@ -30,9 +30,9 @@ public class Main {
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 
-    /*public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         File[] files = new File(FILE_PATH).listFiles();
         if (files == null)
             return;
@@ -42,13 +42,14 @@ public class Main {
             properties.load(new FileReader(file));
 
             String cookie = XGLogin.login(properties.getProperty("id"), properties.getProperty("pwd"));
+
             try {
                 GetInfoCollectForm.run(cookie);
-
+                InfoCollect.run(cookie , properties , GetInfoCollectForm.run(cookie));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-    }*/
+    }
 
 }
