@@ -25,11 +25,30 @@ public class Main {
                 Temperature.run("8" , null , cookie);
                 Temperature.run("16" , null , cookie);
 
-                InfoCollect.run(cookie , properties);
+                InfoCollect.run(cookie , properties , GetInfoCollectForm.run(cookie));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
+
+    /*public static void main(String[] args) throws IOException {
+        File[] files = new File(FILE_PATH).listFiles();
+        if (files == null)
+            return;
+        Properties properties = new Properties();
+
+        for (File file : files) {
+            properties.load(new FileReader(file));
+
+            String cookie = XGLogin.login(properties.getProperty("id"), properties.getProperty("pwd"));
+            try {
+                GetInfoCollectForm.run(cookie);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }*/
 
 }
