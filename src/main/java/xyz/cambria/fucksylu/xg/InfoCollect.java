@@ -30,14 +30,17 @@ public class InfoCollect {
         list.add(new BasicNameValuePair("SpecialtyName" , pps.getProperty("SpecialtyName")));
         list.add(new BasicNameValuePair("ClassName" , pps.getProperty("ClassName")));
         list.add(new BasicNameValuePair("MoveTel" , pps.getProperty("tel")));
-        list.add(new BasicNameValuePair("Province" , new String(pps.getProperty("IDNum").substring(0,2) + "0000")));
+/*        list.add(new BasicNameValuePair("Province" , new String(pps.getProperty("IDNum").substring(0,2) + "0000")));
         list.add(new BasicNameValuePair("City" , new String(pps.getProperty("IDNum").substring(0,4) + "00")));
-        list.add(new BasicNameValuePair("County" , pps.getProperty("IDNum").substring(0,6)));
+        list.add(new BasicNameValuePair("County" , pps.getProperty("IDNum").substring(0,6)));*/
+        list.add(new BasicNameValuePair("Province" , "210000"));
+        list.add(new BasicNameValuePair("City" , "210100"));
+        list.add(new BasicNameValuePair("County" ,"210110"));
         list.add(new BasicNameValuePair("ComeWhere" , pps.getProperty("address")));
         list.add(new BasicNameValuePair("FaProvince" , new String(pps.getProperty("IDNum").substring(0,2) + "0000")));
         list.add(new BasicNameValuePair("FaCity" , new String(pps.getProperty("IDNum").substring(0,4) + "00")));
         list.add(new BasicNameValuePair("FaCounty" , pps.getProperty("IDNum")));
-        list.add(new BasicNameValuePair("FaComeWhere" , pps.getProperty("address")));
+        list.add(new BasicNameValuePair("FaComeWhere" , pps.getProperty("familyaddress")));
         /*list.add(new BasicNameValuePair("radio_1" , "e2f169d0-0778-4e3e-8ebf-64ce5a44f307"));
         list.add(new BasicNameValuePair("radio_2" , "2d520bb1-8632-4d77-b6de-9506df20bdcf"));
         list.add(new BasicNameValuePair("radio_3" , "a884f81e-f401-451d-9f3d-0526aa886feb"));
@@ -59,7 +62,6 @@ public class InfoCollect {
         list.add(new BasicNameValuePair("FaProvinceName" , pps.getProperty("Province")));
         list.add(new BasicNameValuePair("FaCityName" , pps.getProperty("City")));
         list.add(new BasicNameValuePair("FaCountyName" , pps.getProperty("Country")));
-        list.add(new BasicNameValuePair("radioCount" , "11"));
         list.add(new BasicNameValuePair("checkboxCount" , "0"));
         list.add(new BasicNameValuePair("blackCount" , "1"));
         /*list.add(new BasicNameValuePair("PZData" , PZDATA));
@@ -68,7 +70,8 @@ public class InfoCollect {
         try {
             httpPost.setEntity(new UrlEncodedFormEntity(list));
             httpPost.setHeader("Cookie" , cookie);
-            httpPost.setHeader("Content-Type" , "application/x-www-form-urlencoded");
+            httpPost.setHeader("Content-Type" , "application/x-www-form-urlencoded; charset=utf-8");
+            httpPost.setHeader("User-Agent" , "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.55");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

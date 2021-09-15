@@ -50,7 +50,7 @@ public class Temperature {
             CloseableHttpResponse response = httpclient.execute(httpPost);
 
             try {
-                //System.out.println(EntityUtils.toString(response.getEntity()));
+                System.out.println(EntityUtils.toString(response.getEntity()));
                 HttpEntity entity2 = response.getEntity();
                 // 对响应主体做一些有用的事情并确保它被完全消耗掉
                 EntityUtils.consume(entity2);

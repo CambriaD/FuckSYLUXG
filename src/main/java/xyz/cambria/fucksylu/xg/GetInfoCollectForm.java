@@ -19,7 +19,7 @@ public class GetInfoCollectForm {
 
     private static final String URL = "http://xg.sylu.edu.cn/SPCP/Web/Report/Index";
 
-    static List<NameValuePair> run(String cookie) throws IOException {
+    static List<NameValuePair> run(String cookie) throws Exception {
         HttpGet httpGet = new HttpGet(URL);
         httpGet.setHeader("Cookie",cookie);
         String page = EntityUtils.toString(HttpClients.createDefault().execute(httpGet).getEntity());
@@ -37,28 +37,36 @@ public class GetInfoCollectForm {
         r1.setOptionType("0");
         data.add(new BasicNameValuePair("radio_1" , r1.getSelectId()));
         pzdata.add(JSON.toJSONString(r1));
+        int i = 2;
 
-        for (int i = 2; i < 12; i++) {
-            PZData pzData = new PZData();
-            pzData.setOptionType("0");
-            pzData.setOptionName("否");
-            String index = "radio_" + i;
-            substring = page.substring(0 , page.indexOf(index));
-            page = page.substring(page.indexOf(index));
-            pzData.setTitleId(substring.substring(substring.lastIndexOf("data-tid")+10,substring.lastIndexOf("data-tid")+46));
-            //pzData.setSelectId(page.substring(13,49));
+        try {
+            for (i = 2; i < 20; i++) {
+                PZData pzData = new PZData();
+                pzData.setOptionType("0");
+                pzData.setOptionName("否");
+                String index = "radio_" + i;
+                substring = page.substring(0 , page.indexOf(index));
+                page = page.substring(page.indexOf(index));
+                pzData.setTitleId(substring.substring(substring.lastIndexOf("data-tid")+10,substring.lastIndexOf("data-tid")+46));
+                //pzData.setSelectId(page.substring(13,49));
 
-            pzData.setSelectId(page.substring(page.indexOf(">否</label>")-37 , page.indexOf(">否</label>")-1));
+                pzData.setSelectId(page.substring(page.indexOf(">否</label>")-37 , page.indexOf(">否</label>")-1));
 
-            data.add(new BasicNameValuePair(index , pzData.getSelectId()));
-            pzdata.add(JSON.toJSONString(pzData));
+                data.add(new BasicNameValuePair(index , pzData.getSelectId()));
+                pzdata.add(JSON.toJSONString(pzData));
 
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         int reSubmiteFlag = page.indexOf("ReSubmiteFlag");
         data.add(new BasicNameValuePair("ReSubmiteFlag" , page.substring(reSubmiteFlag+36 , reSubmiteFlag+72)));
 
         data.add(new BasicNameValuePair("PZData" , pzdata.toString()));
+
+
+        data.add(new BasicNameValuePair("radioCount" , String.valueOf(i)));
 
         System.out.println(data);
 

@@ -40,6 +40,8 @@ public class XGLogin {
 
         String[] split = raw.split(":|;");
 
+        System.out.println(split[1].trim());
+
         return split[1].trim();
     }
 }
